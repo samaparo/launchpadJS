@@ -1,58 +1,24 @@
-// list of todo list items
-const todos = [
-  {
-    title: "Ask crush out to prom",
-    isDone: false,
-  },
-  {
-    title: "Learn to skateboard",
-    isDone: true,
-  },
-];
+//public static void main(String []args) {
+(function main() {
+  let output = "I have "; // String output = "";
 
-// render out a list of todos to #todoList
-function renderTodos(todos) {
-  // loop over every todo and add new DOM elements to list
-  const domElements = document.createDocumentFragment();
-  todos.forEach((todo) => {
-    // set up checkbox and a listen for changes
-    const checkboxElement = document.createElement("input");
-    checkboxElement.setAttribute("type", "checkbox");
-    checkboxElement.checked = todo.isDone;
-    checkboxElement.addEventListener("change", function (e) {
-      todo.isDone = e.target.checked;
-    });
+  // Variables
+  let x = 10; // int x = 10;
+  output += x + " cats. "; // output = output + x + " cats. ";
 
-    const todoElement = document.createElement("div");
-    todoElement.appendChild(checkboxElement);
-    todoElement.appendChild(document.createTextNode(todo.title));
+  // Loops
+  while (x > 0) {
+    output += "Meow. "; // output = output + "Meow. ";
+    x--; // x--;
+  }
 
-    domElements.appendChild(todoElement);
-  });
+  // Output result to the console.
+  console.log(output); // System.out.print(output);
 
-  // replace old todo list with new one
-  const todoListContainer = document.querySelector("#todoList");
-  todoListContainer.innerHTML = "";
-  todoListContainer.appendChild(domElements);
-}
+  // Output result to the page.
+  document.querySelector("#output").innerHTML = output;
 
-// our "main" function that runs when the page is done loading
-(function () {
-  // render initial list of todos
-  renderTodos(todos);
-
-  // when someone submits the todo form, add a new todo
-  const form = document.querySelector("#todoForm");
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const input = form.querySelector("input");
-    const todoTitle = form.querySelector("input").value;
-    todos.push({
-      title: todoTitle,
-      isDone: false,
-    });
-    input.value = "";
-    renderTodos(todos);
+  document.querySelector("#meow").addEventListener("click", () => {
+    console.log("Meow!");
   });
 })();
